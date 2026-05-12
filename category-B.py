@@ -1,12 +1,15 @@
 """
-Structured Data ETL Practical Exam Answer Key
+Structured Data ETL Practical Exam
 Topic: Load structured CSV data into SQLite3 using Python
 
-This version contains the complete answer for:
+Student Task:
+Complete only the SQLite3 parts:
 
 1. CREATE TABLE
 2. INSERT INTO
 3. SELECT FROM
+
+The extraction and transformation code is already provided.
 """
 
 import csv
@@ -58,79 +61,60 @@ def connect_database():
 
 
 def create_table(cursor):
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS sales_records (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            date TEXT,
-            product TEXT,
-            category TEXT,
-            quantity INTEGER,
-            unit_price REAL,
-            total_sales REAL,
-            payment_method TEXT
-        )
-    """)
+    """
+    TODO #1:
+    Write the SQLite3 CREATE TABLE statement.
+
+    Table name:
+    sales_records
+
+    Columns:
+    id INTEGER PRIMARY KEY AUTOINCREMENT
+    date TEXT
+    product TEXT
+    category TEXT
+    quantity INTEGER
+    unit_price REAL
+    total_sales REAL
+    payment_method TEXT
+    """
+
+    # Write CREATE TABLE code here
+    pass
 
 
 def insert_records(cursor, records):
-    cursor.execute("DELETE FROM sales_records")
+    """
+    TODO #2:
+    Write the SQLite3 INSERT INTO statement.
 
-    for record in records:
-        cursor.execute("""
-            INSERT INTO sales_records (
-                date,
-                product,
-                category,
-                quantity,
-                unit_price,
-                total_sales,
-                payment_method
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (
-            record["date"],
-            record["product"],
-            record["category"],
-            record["quantity"],
-            record["unit_price"],
-            record["total_sales"],
-            record["payment_method"]
-        ))
+    Insert the following fields:
+    date
+    product
+    category
+    quantity
+    unit_price
+    total_sales
+    payment_method
+    """
+
+    # Write INSERT INTO code here
+    pass
 
 
 def select_records(cursor):
-    cursor.execute("""
-        SELECT id, date, product, category, quantity, unit_price, total_sales, payment_method
-        FROM sales_records
-    """)
+    """
+    TODO #3:
+    Write the SQLite3 SELECT statement.
 
-    rows = cursor.fetchall()
+    Select and display all records from sales_records.
 
-    print("\nSALES RECORDS")
-    print("-" * 110)
-    print(
-        f"{'ID':<5}"
-        f"{'Date':<15}"
-        f"{'Product':<18}"
-        f"{'Category':<15}"
-        f"{'Qty':<8}"
-        f"{'Price':<12}"
-        f"{'Total':<12}"
-        f"{'Payment':<15}"
-    )
-    print("-" * 110)
+    Expected columns:
+    id, date, product, category, quantity, unit_price, total_sales, payment_method
+    """
 
-    for row in rows:
-        print(
-            f"{row[0]:<5}"
-            f"{row[1]:<15}"
-            f"{row[2]:<18}"
-            f"{row[3]:<15}"
-            f"{row[4]:<8}"
-            f"{row[5]:<12.2f}"
-            f"{row[6]:<12.2f}"
-            f"{row[7]:<15}"
-        )
+    # Write SELECT code here
+    pass
 
 
 def main():
